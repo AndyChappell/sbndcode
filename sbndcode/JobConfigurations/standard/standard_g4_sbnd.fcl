@@ -119,4 +119,4 @@ outputs:
   }
 }
 
-
+services.ParticleListAction.keepEMShowerDaughters: true
