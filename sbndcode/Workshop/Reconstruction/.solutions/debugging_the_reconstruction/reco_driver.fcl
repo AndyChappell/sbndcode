@@ -1,0 +1,6 @@
+#include "standard_reco1reco2_sbnd.fcl"
+
+outputs.out1.fileName: "%ifb_%p.root"
+
+physics.producers.pandora.ConfigFile: "MyPandoraSettings_Master_Standard.xml"
+
