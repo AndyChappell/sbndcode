@@ -1,0 +1,11 @@
+BEGIN_PROLOG
+
+pandoraValidation:
+{
+    module_type: "PandoraValidation"
+
+    SliceLabel: "pandora"
+    PFParticleLabel: "pandora"
+}
+
+END_PROLOG
