@@ -54,7 +54,7 @@ class validation::PandoraValidation : public art::EDAnalyzer {
         void Reset();
 
         template<typename T>
-        void AddPropertyToVector(const larpandoraobj::PFParticleMetadata::PropertiesMap &properties, const std::string &key, std::vector<T> vector);
+        void AddPropertyToVector(const larpandoraobj::PFParticleMetadata::PropertiesMap &properties, const std::string &key, std::vector<T> &vector);
 
         TTree *fTree;
         unsigned int fEventID;
@@ -161,7 +161,7 @@ void validation::PandoraValidation::analyze(art::Event const& e)
                 this->AddPropertyToVector(properties, "LArThreeDLinearFitFeatureTool_MaxFitGapLength", fLinearMaxFitGapLength);
                 this->AddPropertyToVector(properties, "LArThreeDLinearFitFeatureTool_SlidingLinearFitRMS", fLinearFitRMS);
                 this->AddPropertyToVector(properties, "LArThreeDOpeningAngleFeatureTool_AngleDiff", fOpenAngleDiff);
-                this->AddPropertyToVector(properties,"LArThreeDPCAFeatureTool_SecondaryPCARatio", fPCASecondaryRatio);
+                this->AddPropertyToVector(properties, "LArThreeDPCAFeatureTool_SecondaryPCARatio", fPCASecondaryRatio);
                 this->AddPropertyToVector(properties, "LArThreeDPCAFeatureTool_TertiaryPCARatio", fPCATertiaryRatio);
                 this->AddPropertyToVector(properties, "LArThreeDVertexDistanceFeatureTool_VertexDistance", fVertexDistance);
 
@@ -260,7 +260,7 @@ void validation::PandoraValidation::Reset()
 }
 
 template<typename T>
-void validation::PandoraValidation::AddPropertyToVector(const larpandoraobj::PFParticleMetadata::PropertiesMap &properties, const std::string &key, std::vector<T> vector)
+void validation::PandoraValidation::AddPropertyToVector(const larpandoraobj::PFParticleMetadata::PropertiesMap &properties, const std::string &key, std::vector<T> &vector)
 {
     if (properties.find(key) != properties.end())
         vector.emplace_back(properties.at(key));
